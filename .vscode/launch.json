@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": false,
-      "cwd": "/home/zeliatorres/OpenAI",
-      "program": "/home/zeliatorres/OpenAI/build/Debug/outDebug",
+      "cwd": "/home/zeliatorres/Final ED2 Ordenação",
+      "program": "/home/zeliatorres/Final ED2 Ordenação/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
