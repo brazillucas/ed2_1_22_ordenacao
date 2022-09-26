@@ -1,0 +1,18 @@
+Ordene o vetor [8, 10, 42, 93, 58, 12, 13, 49, 77, 25, 81, 4, 78, 20, 80] com Quicksort, Shellsort, MergeSort e Heapsort em C
+
+Desenvolva um sistema que gere um vetor aleatório, ordene este vetor com cada um dos
+quatro algoritmos e mostre:
+• O algoritmo utilizado
+• A quantidade de comparações entre posições do vetor.
+• A quantidade de troca de valores entre posições do vetor.
+• O tempo gasto na execução do algoritmo.
+• E, ao final, o algoritmo de melhor desempenho em função do tempo.
+O programa deve receber o tamanho do vetor (N) entre 10 e 100000, criar o vetor, preencher com valores inteiros aleatoriamente e utilizar o mesmo vetor para os quatro algoritmos.
+O vetor deve ser impresso antes e depois de cada ordenação.
+
+
+Desenvolva um sistema que mostre:
+• O algoritmo utilizado
+• A quantidade de comparações entre posições do vetor.
+• A quantidade de troca de valores entre posições do vetor.
+• O tempo gasto na execução do algoritmo.
