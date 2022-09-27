@@ -28,6 +28,36 @@ void printVetor(int *v, int max) {
 	}
 }
 
+void melhorAlgoritmo(char *melhor, double *tempoHeap, double *tempoMerge, double *tempoQuick, double *tempoShell) {
+	
+	double min = 1316134912;
+
+	double v[4];
+	
+	v[1] = *tempoMerge;
+	v[0] = *tempoHeap;
+	v[2] = *tempoQuick;
+	v[3] = *tempoShell;
+
+	for (int i = 0; i < 4; i++ ) {
+		if (v[i] < min) {
+			min = v[i];
+		}
+	}
+	
+	printf("\nMenor tempo: %f", min);
+
+	if (min == *tempoQuick) {
+		*melhor = "QuickSort";
+	} else if (min == *tempoMerge) {
+		*melhor = "MergeSort";
+	} else if (min == *tempoShell) {
+		*melhor = "ShellSort";
+	} else if (min == *tempoHeap) {
+		*melhor = "HeapSort";
+	}
+}
+
 void heapsort(int *v, int n, int *countComp, int *countTroca) {
 
 	int i = n / 2, pai, filho, t;
@@ -152,6 +182,39 @@ void quickSort(int *v, int n, int* countComp, int* countTroca) {
 	}  
 }
 
+// void quickSort(int *vetor, int inicio, int fim, int *countComp, int *countTroca) {
+// 	int q;
+// 	if (inicio < fim) {
+// 		q = divide(vetor, inicio, fim, &countComp, &countTroca);
+// 		quickSort(vetor, inicio, q - 1, &countComp, &countTroca);
+// 		quickSort(vetor, q + 1, fim, &countComp, &countTroca);
+// 	}
+// }
+
+// int divide(int *vetor, int inicio, int fim, int *countComp, int *countTroca) {
+// 	int x, i, j, aux;
+// 	x = vetor[inicio];
+// 	i = inicio - 1;
+// 	j = fim + 1;
+// 	while (i < j) {
+// 		do {
+// 			j--;
+// 			*countComp = *countComp + 1;
+// 		} while (vetor[j] > x);
+// 		do {
+// 			i++;
+// 			*countComp = *countComp + 1;
+// 		} while (vetor[i] < x);
+// 		if (i < j) {
+// 			aux = vetor[i];
+// 			vetor[i] = vetor[j];
+// 			vetor[j] = aux;
+// 			*countTroca = *countTroca + 1;			
+// 		}
+// 	}
+// 	return j;
+// }
+
 void shellSort(int *v, int n, int *countComp, int *countTroca) {
   
 	int i, j, value;
@@ -179,7 +242,9 @@ void shellSort(int *v, int n, int *countComp, int *countTroca) {
 void heapsort(int *v, int n, int *countComp, int *countTroca);
 void mergeSort(int *v, int n, int *countComp, int *countTroca);
 void quickSort(int *v, int n, int *countComp, int *countTroca);
+//void quickSort(int *vetor, int inicio, int fim, int *countComp, int *countTroca);
 void shellSort(int *v, int n, int *countComp, int *countTroca);
+//int divide (int *, int, int, int *, int *);
 
 int main() {
 
@@ -190,6 +255,7 @@ int main() {
 	int compMerge = 0, trocaMerge = 0;
 	int compQuick = 0, trocaQuick = 0;
 	int compShell = 0, trocaShell = 0;
+	char melhor;
 	clock_t t;
     double tempoHeap, tempoMerge, tempoQuick, tempoShell;
 
@@ -213,7 +279,7 @@ int main() {
 	//Fim dos Vetores
   
 	printf("Vetor original\n");
-	printVetor(v, max);
+	//printVetor(v, max);
 
 	//HeapSort
 	t = clock();
@@ -244,6 +310,7 @@ int main() {
 	//QuickSort
 	t = clock();
 	quickSort(quickSortV, max, &compQuick, &trocaQuick);
+	//quickSort(quickSortV, 0, max - 1, &compQuick, &trocaQuick);
 	t = clock() - t;
 
 	printf("\n\nVetor ordenado QuickSort\n");
@@ -266,6 +333,10 @@ int main() {
     tempoShell = ((double)t)/CLOCKS_PER_SEC;
     printf("\nTempo gasto: %f", tempoShell); 
 	//Fim do ShellSort
+	
+	melhorAlgoritmo(&melhor, &tempoHeap, &tempoMerge, &tempoQuick, &tempoShell);
+	
+	printf("\nO melhor tempo foi do algoritmo %c",melhor);
 
 	return 0;
 
