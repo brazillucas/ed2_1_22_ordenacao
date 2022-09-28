@@ -263,7 +263,7 @@ void shellSort(int *v, int n, int *countComp, int *countTroca);
 
 int main() {
 
-	int max = 100000;
+	int max = rand() % 100000;
 	int v[max], heapSortV[max], mergeSortV[max], quickSortV[max], shellSortV[max];
 	int compHeap = 0, trocaHeap = 0;
 	int compMerge = 0, trocaMerge = 0;
