@@ -102,8 +102,8 @@ void heapsort(int *v, int n, int *countComp, int *countTroca) {
 		while(filho < n) {
 			if((filho + 1 < n) && (v[filho + 1] > v[filho])) {
 				filho++;
-				*countComp = *countComp + 1;
 			}
+			*countComp = *countComp + 1;
 			if(v[filho] > t) {
 				v[pai] = v[filho];
 				*countTroca = *countTroca + 1;
@@ -145,7 +145,6 @@ void merge(int *v, int n, int meio, int *countComp, int *countTroca) {
 				*countTroca = *countTroca + 1;
 				if(!fim1) {
 					temp[i] = v[p1++];
-				//	*countTroca = *countTroca + 1;
 				} else {
 					temp[i] = v[p2++];
 				}
@@ -229,9 +228,7 @@ void shellSort(int *v, int n, int *countComp, int *countTroca) {
 void heapsort(int *v, int n, int *countComp, int *countTroca);
 void mergeSort(int *v, int n, int *countComp, int *countTroca);
 void quickSort(int *v, int n, int *countComp, int *countTroca);
-//void quickSort(int *vetor, int inicio, int fim, int *countComp, int *countTroca);
 void shellSort(int *v, int n, int *countComp, int *countTroca);
-//int divide (int *, int, int, int *, int *);
 
 int main() {
 
@@ -248,7 +245,7 @@ int main() {
 	//Vetores
 	//Gerando vetor aleatório
 	for(int i = 0; i < max; i++) {
-		v[i] = rand() % max;
+		v[i] = rand() % 100000;
 	}
 
 	//Copia do vetor para HeapSort
@@ -265,9 +262,8 @@ int main() {
 	//Fim dos Vetores
   
 	//Tamanho do vetor
-	printf("Tamanho do vetor: %d\n", max);
 	printf("Vetor original\n");
-	//printVetor(v, max);
+	printVetor(v, max);
 
 	//HeapSort
 	t = clock();
@@ -275,7 +271,7 @@ int main() {
 	t = clock() - t;
 	
 	printf("\n\nVetor ordenado HeapSort\n");
-	//printVetor(heapSortV, max);
+	printVetor(heapSortV, max);
 
 	compTrocas(&compHeap, &trocaHeap);
     tempoHeap = ((double)t)/CLOCKS_PER_SEC;
@@ -288,7 +284,7 @@ int main() {
 	t = clock() - t;
 
 	printf("\n\nVetor ordenado MergeSort\n");
-	//printVetor(mergeSortV, max);
+	printVetor(mergeSortV, max);
 
 	compTrocas(&compMerge, &trocaMerge);
     tempoMerge = ((double)t)/CLOCKS_PER_SEC;
@@ -298,11 +294,10 @@ int main() {
 	//QuickSort
 	t = clock();
 	quickSort(quickSortV, max, &compQuick, &trocaQuick);
-	//quickSort(quickSortV, 0, max - 1, &compQuick, &trocaQuick);
 	t = clock() - t;
 
 	printf("\n\nVetor ordenado QuickSort\n");
-	//printVetor(quickSortV, max);
+	printVetor(quickSortV, max);
 
 	compTrocas(&compQuick, &trocaQuick);
     tempoQuick = ((double)t)/CLOCKS_PER_SEC;
@@ -315,14 +310,15 @@ int main() {
 	t = clock() - t;
 
 	printf("\n\nVetor ordenado ShellSort\n");
-	//printVetor(shellSortV, max);
+	printVetor(shellSortV, max);
 
 	compTrocas(&compShell, &trocaShell);
     tempoShell = ((double)t)/CLOCKS_PER_SEC;
     printf("\nTempo gasto: %f", tempoShell); 
 	//Fim do ShellSort
 	
-	printf("\n");
+	printf("\n");	
+	printf("\nTamanho do vetor: %d", max);
 	melhorAlgoritmo(&tempoHeap, &tempoMerge, &tempoQuick, &tempoShell);
 
 	return 0;
