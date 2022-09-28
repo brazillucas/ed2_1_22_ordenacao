@@ -31,6 +31,7 @@ void printVetor(int *v, int max) {
 void melhorAlgoritmo(double *tempoHeap, double *tempoMerge, double *tempoQuick, double *tempoShell) {
 	
 	double min = 1316134912;
+	int melhor;
 
 	double v[4];
 	
@@ -48,12 +49,24 @@ void melhorAlgoritmo(double *tempoHeap, double *tempoMerge, double *tempoQuick, 
 	printf("\nMenor tempo: %f", min);
 
 	if (min == *tempoQuick) {
-		printf("\nO melhor tempo foi do algoritmo QuickSort");
+		melhor = 1;
 	} else if (min == *tempoMerge) {
-		printf("\nO melhor tempo foi do algoritmo MergeSort");
+		melhor = 2;
 	} else if (min == *tempoShell) {
-		printf("\nO melhor tempo foi do algoritmo ShellSort");
+		melhor = 3;
 	} else if (min == *tempoHeap) {
+		melhor = 4;
+	} else {
+		printf("\nNenhum resultado bom, melhore!");
+	}
+
+	if (melhor == 1) {
+		printf("\nO melhor tempo foi do algoritmo QuickSort");
+	} else if (melhor ==2) {
+		printf("\nO melhor tempo foi do algoritmo MergeSort");
+	} else if (melhor == 3) {
+		printf("\nO melhor tempo foi do algoritmo ShellSort");
+	} else if (melhor == 4) {
 		printf("\nO melhor tempo foi do algoritmo HeapSort");
 	} else {
 		printf("\nNenhum resultado bom, melhore!");
@@ -250,7 +263,7 @@ void shellSort(int *v, int n, int *countComp, int *countTroca);
 
 int main() {
 
-	int max = rand() % 100000;
+	int max = 100000;
 	int v[max], heapSortV[max], mergeSortV[max], quickSortV[max], shellSortV[max];
 	int compHeap = 0, trocaHeap = 0;
 	int compMerge = 0, trocaMerge = 0;
